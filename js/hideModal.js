@@ -1,14 +1,16 @@
 export const hideModal = () => {
-    const modal = document.querySelector('.popup-call')
+    const modals = document.querySelectorAll('.popup-call, .popup-check')
     const closeButton = document.querySelector('.popup-close')
     const popup = document.querySelector('.popup')
-
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none'
-    })
-
-    popup.addEventListener('click', e => {
-        if (e.target === popup)
+    modals.forEach(modal => {
+        const closeButton = modal.querySelector('.popup-close')
+        closeButton.addEventListener('click', () => {
             modal.style.display = 'none'
+        })
+
+        popup.addEventListener('click', e => {
+            if (e.target === popup)
+                modal.style.display = 'none'
+        })
     })
 }
