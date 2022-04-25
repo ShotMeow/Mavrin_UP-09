@@ -1,5 +1,6 @@
 import { constructor } from "./constructor.js"
 import { hideModal } from "./hideModal.js"
+import { message } from "./message.js"
 import { questions } from "./questions.js"
 import { sendData } from "./sendData.js"
 import { showModal } from "./showModal.js"
@@ -11,3 +12,4 @@ showModal()
 questions()
 constructor()
 validation()
+message()

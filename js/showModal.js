@@ -1,3 +1,5 @@
+import { sendData } from "./sendData.js"
+
 export const showModal = () => {
     const callButtons = document.querySelectorAll('.call-btn, .discount-btn')
     callButtons.forEach(button => {
