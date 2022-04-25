@@ -2,12 +2,12 @@ export const sendData = () => {
     const forms = document.querySelectorAll('.capture-form')
     forms.forEach(form => {
         form.addEventListener('submit', async e => {
-            let message = document.querySelector('input[name=user_quest]').value
+            let message = document.querySelector('input[name=user_quest]')
             e.preventDefault()
             const state = form.querySelector('.state')
             try {
                 state.innerHTML = 'Загрузка'
-                if (message) {
+                if (message.value) {
                     await fetch('server.php', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
@@ -17,6 +17,7 @@ export const sendData = () => {
                             message: message
                         })
                     })
+                    message.value = ''
                 } else {
                     await fetch('server.php', {
                         method: 'POST',
@@ -28,6 +29,10 @@ export const sendData = () => {
                     })
                 }
                 state.innerHTML = 'Отправлено'
+                const inputs = document.querySelectorAll('input')
+                inputs.forEach(input => {
+                    input.value = ''
+                })
             }
             catch (error) {
                 state.innerHTML = 'Ошибка'
